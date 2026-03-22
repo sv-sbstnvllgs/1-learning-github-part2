@@ -1,0 +1,89 @@
+version = commit
+main = master, but main is newer. This is the branch name, pointer to a specific sequence of commits
+repository = repository being tracked by git
+.x = hidden file/folder
+
+command-line shell commands:
+  ls, src, cd <"absolute path C:\"|..|"relative path"|~ (home)>
+
+  \ -> used in windows
+  / -> in almost any other OS and also used in URLs
+  -- -> used to disambiguate between branches () and files (-- file)
+
+flags convention:
+  -x -> short flags (shorcuts)
+  --x -> long flags
+  -xy = -x -y
+  * order of flags doesn't matter as long as their respective arguments are next to their flags
+
+git structure:
+  save changes
+       .
+       .
+       .
+ staged changes (commit ↑ | reset ↓)
+       .
+       .
+       .
+ unstaged changes (add ↑ | checkout ↓)
+       .
+       .
+       .
+     code
+
+git commands:
+  git init
+  git status
+
+  git config --global user.<email|name> <"email or name here">
+  git commit --amend --reset-author
+
+  git add <file|folder/|.> (x files, y insertions means y lines of code were added))
+  git reset <file|folder/|.>
+  git checkout -- <file|folder/|.> (-- is used to tell git we are checking out a file/folder, not a branch)
+
+  git commit -m "message" (-m is a shortcut for the --message flag)
+  git commit -m "message" --amend (overwrite the current commit)
+
+  git log (see changes/history)
+
+  git checkout <commit hash (id of the commit/version of the code)> (to go back to a previous version of the code)
+  git log --all (show all commits, including those infront of the head commit)
+  git log --all --graph
+  :q (q means quit)
+  git checkout <commit hash> <file|folder/|.>
+
+  .gitignore
+  folder/secrets.txt -> relative to .gitignore
+  /folder/secrets.txt -> relative to repo root
+  secrets.txt -> ignores all files with that name
+
+  git ls-tree -r --name-only master (show all files in the master branch without including uncommited changes)
+  rm -rf .git
+
+checking out a book:
+  * you take it out of the library (the repository)
+  * you have it to read or edit (your working copy)
+  * later, you may check it back in (commit changes)
+
+summary:
+1) Create a Version
+  git init
+  git status
+  git add .
+  git commit -m "Message"
+
+2) View Previous Versions
+  git log --all --graph
+  git checkout <commit_hash>
+  git checkout <branch_name>
+
+3) Restore to Previous Version
+  git checkout <hash|branch> <file|folder>
+  git commit -m "Message"
+
+examples of git aliases:
+  git config --global alias.s "status"
+  git config --global alias.cm "commit -m"
+
+-r -> recursive (delete the folder and all its contents), -f -> force (ignore warning or errors)
